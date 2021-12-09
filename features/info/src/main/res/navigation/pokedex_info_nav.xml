@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/pokedex_info_nav"
+    app:startDestination="@id/pokedexInfoPage">
+
+    <fragment
+        android:id="@+id/pokedexInfoPage"
+        android:name="com.eyedea.info.sub.infolanding.view.PokedexInfoPage"
+        android:label="PokedexInfoPage" />
+
+    <action
+        android:id="@+id/navigateToPokedexInfo"
+        app:destination="@+id/pokedex_info_nav"/>
+</navigation>

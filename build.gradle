@@ -1,0 +1,313 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    def localProperties = new Properties()
+    localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+
+    ext {
+        version = [
+                major : localProperties.getProperty("version.major") as Integer,
+                minor : localProperties.getProperty("version.minor") as Integer,
+                patch : localProperties.getProperty("version.patch") as Integer
+        ]
+
+        componentVersion = [
+                major : 0,
+                minor : 0,
+                patch : 1
+        ]
+
+        appVersionName = "${version.major}.${version.minor}.${version.patch}"
+        appVersionCode = localProperties.getProperty("versionCode") as Integer
+
+
+        componentVersionName = "${componentVersion.major}.${componentVersion.minor}.${componentVersion.patch}"
+        componentVersionCode = componentVersion.major * 10000 + componentVersion.minor * 100 + componentVersion.patch
+
+        androidMinSdkVersion = 21
+        androidCompileSdkVersion = 31
+        androidTargetSdkVersion = 31
+        androidBuildToolsVersion = "29.0.3"
+
+        kotlin_version = '1.6.0'
+        nav_version = '2.4.0-beta01'
+        android_plugin_version = '4.0.1'
+        google_services_version = '4.3.3'
+        crashlytics_version = '2.2.0'
+        jacoco_version = "0.8.4"
+        sonarqube_version = "3.0"
+        jacoco_android_version = "0.2"
+        performance_monitoring_version = "1.3.1"
+        dynatrace_version = "8.217.1.1003"
+        dex_protector_version = "12.0.31"
+        hilt_version = "2.40.2"
+        dependencyVersion = [
+                kotlin                       : kotlin_version,
+                appCompat                    : '1.3.1',
+                core                         : '1.7.0',
+                coroutine                    : '1.3.9',
+                lifecycle                    : '2.4.0',
+                rxAndroid                    : '2.0.2',
+                rxJava                       : '2.1.17',
+                retrofit                     : '2.9.0',
+                okHttp                       : '3.14.7',
+                gson                         : '2.8.6',
+                retrofitGson                 : '2.8.0',
+                retrofitScalar               : '2.1.0',
+                nav                          : nav_version,
+                materialUi                   : '1.3.0-alpha01',
+                viewPager                    : '1.1.0-alpha01',
+                cardView                     : '1.0.0',
+                constraintLayout             : '2.0.1',
+                glide                        : '4.11.0',
+                permission                   : '3.0.0',
+                khronos                      : '0.9.0',
+                loggingInterceptor           : "3.10.0",
+                hilt                         : hilt_version,
+                fragmentKtx                  : "1.2.4",
+                swipeToRefresh               : "1.0.0",
+                firebaseCrashlytics          : "17.1.0",
+                firebaseAnalyticsKtx         : "17.3.0",
+                firebaseInappmessagingKtx    : "19.1.4",
+                firebaseMessaging            : "20.2.1",
+                forgerockAuth                : "2.0.0",
+                room                         : "2.2.5",
+                lingver                      : "1.3.0",
+                androiddebug                 : "1.0.6",
+                fbstetho                     : "1.5.1",
+                firebasePerformanceMonitoring: "19.0.8",
+                firebaseDynamicLinksKtx      : "19.1.0",
+                multidex                     : "2.0.1",
+                userAgentInterceptor         : "1.0.1",
+                jcropImageView               : "0.22",
+                legacySupportV4              : "1.0.0",
+                dynatrace_standalone_version : "8.217.1.1003",
+                googleTagManager             : "17.0.0",
+                playAuth                     : "17.0.0",
+                playAuthApiPhone             : "17.4.0",
+                playCore                     : "1.8.3",
+                playCoreCtx                  : "1.8.1",
+                bytes                        : "1.4.0",
+                facebook                     : "8.1.0",
+                xendit                       : "2.3.2",
+                chucker                      : "3.4.0",
+                tooLargeTool                 : "0.3.0@aar",
+                moEnggage                    : "11.4.00",
+                richNotification             : "2.3.00",
+                cameraCore                   : "1.1.0-alpha04",
+                camera2                      : "1.1.0-alpha04",
+                cameraLifecycle              : "1.1.0-alpha04",
+                cameraView                   : "1.0.0-alpha24",
+                mlkitTextRecognition         : "16.1.3",
+                barcodeScanning              : "16.1.1",
+                draggableView                : "1.0.0",
+                medallia                     : "3.10.1",
+                tooltip                      : "0.2.5",
+                optimizely                   : "3.10.1"
+        ]
+        testVersion = [
+                jUnit          : '4.12',
+                mockitoCore    : "2.23.0",
+                coroutineTest  : "1.3.1",
+                mockitoKotlin  : "2.2.0",
+                coreTesting    : "2.1.0",
+                androidJUnit   : '1.1.1',
+                androidEspresso: '3.2.0'
+        ]
+        coreDependencies = [
+                // main
+                kotlin                       : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$dependencyVersion.kotlin",
+                appCompat                    : "androidx.appcompat:appcompat:$dependencyVersion.appCompat",
+                core                         : "androidx.core:core-ktx:$dependencyVersion.core",
+                loggingInterceptor           : "com.squareup.okhttp3:logging-interceptor:$dependencyVersion.loggingInterceptor",
+                hilt                         : "com.google.dagger:hilt-android:$dependencyVersion.hilt",
+                // Firebase SDK for Google Analytics
+                firebaseAnalyticsKtx         : "com.google.firebase:firebase-analytics-ktx:$dependencyVersion.firebaseAnalyticsKtx",
+                firebaseInappmessagingKtx    : "com.google.firebase:firebase-inappmessaging-display-ktx:$dependencyVersion.firebaseInappmessagingKtx",
+
+                // Fireabase SDK for Performance Monitoring
+                firebasePerformanceMonitoring: "com.google.firebase:firebase-perf:$dependencyVersion.firebasePerformanceMonitoring",
+
+                // Dynatrace
+                dynatraceStandaloneMonitoring: "com.dynatrace.agent:agent-android:$dependencyVersion.dynatrace_standalone_version",
+
+                // Language Selection
+                lingver                      : "com.github.YarikSOffice:lingver:$dependencyVersion.lingver",
+                multidex                     : "androidx.multidex:multidex:$dependencyVersion.multidex",
+                userAgentInterceptor         : "com.github.danielceinos:Cooper:$dependencyVersion.userAgentInterceptor",
+                legacySupportV4              : "androidx.legacy:legacy-support-v4:$dependencyVersion.legacySupportV4",
+
+                // PlayCore
+                playCore                     : "com.google.android.play:core:$dependencyVersion.playCore",
+
+                // PlayCoreCtx
+                playCoreCtx                    : "com.google.android.play:core:$dependencyVersion.playCoreCtx",
+                bytes                        : "at.favre.lib:bytes:$dependencyVersion.bytes",
+                // FB SDK
+                facebook                    : "com.facebook.android:facebook-android-sdk:$dependencyVersion.facebook",
+
+                // TransactionTooLargeException detector
+                tooLargeTool                : "com.gu.android:toolargetool:$dependencyVersion.tooLargeTool",
+
+                // MoEngage
+                moEnggage                   : "com.moengage:moe-android-sdk:$dependencyVersion.moEnggage",
+                richNotification            : "com.moengage:rich-notification:$dependencyVersion.richNotification",
+
+                // CameraX
+                cameraCore              :   "androidx.camera:camera-core:$dependencyVersion.cameraCore",
+                camera2                 :   "androidx.camera:camera-camera2:$dependencyVersion.camera2",
+                cameraLifecycle         :   "androidx.camera:camera-lifecycle:$dependencyVersion.cameraLifecycle",
+                cameraView              :   "androidx.camera:camera-view:$dependencyVersion.cameraView",
+
+                // TextRecognition (OCR)
+                mlkitTextRecognition    :   "com.google.android.gms:play-services-mlkit-text-recognition:$dependencyVersion.mlkitTextRecognition",
+
+                // Barcode Scanning
+                barcodeScanning         :   "com.google.mlkit:barcode-scanning:$dependencyVersion.barcodeScanning",
+                // medallia
+                medallia                : "com.medallia.digital.mobilesdk:android-sdk:$dependencyVersion.medallia"
+        ]
+        coreKaptDependencies = [
+                hiltKapt                : "com.google.dagger:hilt-android-compiler:$dependencyVersion.hilt"
+        ]
+        mainDependencies = [
+                // navigation
+                navFragment            : "androidx.navigation:navigation-fragment-ktx:$dependencyVersion.nav",
+                navUi                  : "androidx.navigation:navigation-ui-ktx:$dependencyVersion.nav",
+
+                // converter
+                gson                   : "com.google.code.gson:gson:$dependencyVersion.gson",
+
+                // permission
+                permission             : "pub.devrel:easypermissions:$dependencyVersion.permission",
+
+                // Firebase SDK for Google Analytics
+                firebaseAnalyticsKtx   : "com.google.firebase:firebase-analytics-ktx:$dependencyVersion.firebaseAnalyticsKtx",
+                firebaseInappmessagingKtx    : "com.google.firebase:firebase-inappmessaging-display-ktx:$dependencyVersion.firebaseInappmessagingKtx",
+
+                // Firebase Crashlytics SDK
+                firebaseCrashlytics    : "com.google.firebase:firebase-crashlytics:$dependencyVersion.firebaseCrashlytics",
+                firebaseDynamicLinksKtx: "com.google.firebase:firebase-dynamic-links-ktx:$dependencyVersion.firebaseDynamicLinksKtx",
+
+                // GTM
+                googleTagManager        : "com.google.android.gms:play-services-tagmanager:$dependencyVersion.googleTagManager",
+        ]
+        chuckerDebugDependencies = [
+                // HTTP LOGGING
+                chuckerDebug    : "com.github.chuckerteam.chucker:library:$dependencyVersion.chucker"
+        ]
+        chuckerReleaseDependencies = [
+                chuckerRelease  : "com.github.chuckerteam.chucker:library-no-op:$dependencyVersion.chucker"
+        ]
+        notificationDependencies = [
+                // Firebase Messaging
+                firebaseMessaging: "com.google.firebase:firebase-messaging:$dependencyVersion.firebaseMessaging"
+        ]
+        smsReceiverDependencies = [
+                // Play services auth
+                playAuth: "com.google.android.gms:play-services-auth:$dependencyVersion.playAuth",
+                playAuthApiPhone : "com.google.android.gms:play-services-auth-api-phone:$dependencyVersion.playAuthApiPhone"
+        ]
+        ciamDependencies = [
+                forgerockAuth: "org.forgerock:forgerock-auth:$dependencyVersion.forgerockAuth"
+        ]
+        xenditDependencies = [
+                xendit: "com.xendit:xendit-android:$dependencyVersion.xendit"
+        ]
+        uiDependencies = [
+                // UI
+                materialUi      : "com.google.android.material:material:$dependencyVersion.materialUi",
+                viewPager       : "androidx.viewpager2:viewpager2:$dependencyVersion.viewPager",
+                cardView        : "androidx.cardview:cardview:$dependencyVersion.cardView",
+                constraintLayout: "androidx.constraintlayout:constraintlayout:$dependencyVersion.constraintLayout",
+                glide           : "com.github.bumptech.glide:glide:$dependencyVersion.glide",
+                fragmentKtx     : "androidx.fragment:fragment-ktx:$dependencyVersion.fragmentKtx",
+                swipeToRefresh  : "androidx.swiperefreshlayout:swiperefreshlayout:$dependencyVersion.swipeToRefresh",
+                khronos         : "com.github.hotchemi:khronos:$dependencyVersion.khronos",
+                shimmer         : "com.facebook.shimmer:shimmer:0.5.0",
+
+                // navigation
+                navFragment     : "androidx.navigation:navigation-fragment-ktx:$dependencyVersion.nav",
+                navUi           : "androidx.navigation:navigation-ui-ktx:$dependencyVersion.nav",
+                jcropImageView  : "com.github.jimcoven:jcropimageview:$dependencyVersion.jcropImageView",
+
+                // myxl component
+//                component                    : "com.myxlultimate:component:$componentVersionName",
+
+                // DraggableView
+                draggableView                : "com.github.hyuwah:DraggableView:$dependencyVersion.draggableView",
+
+                // ToolTip
+//                toolTip                : "com.myxlultimate:android-simple-tooltip:$dependencyVersion.tooltip",
+
+                // Optimizely
+                optimizely      : "com.optimizely.ab:android-sdk:$dependencyVersion.optimizely"
+        ]
+        moduleDependencies = [
+                // coroutine
+                coroutine     : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$dependencyVersion.coroutine",
+
+                // lifecycle
+                lifecycle     : "androidx.lifecycle:lifecycle-viewmodel-ktx:$dependencyVersion.lifecycle",
+                liveData      : "androidx.lifecycle:lifecycle-livedata-ktx:$dependencyVersion.lifecycle",
+                rxAndroid     : "io.reactivex.rxjava2:rxandroid:$dependencyVersion.rxAndroid",
+                rxJava        : "io.reactivex.rxjava2:rxjava:$dependencyVersion.rxJava",
+
+                // network
+                retrofit      : "com.squareup.retrofit2:retrofit:$dependencyVersion.retrofit",
+                okHttp        : "com.squareup.okhttp3:okhttp:$dependencyVersion.okHttp",
+
+                // utility
+                retrofitGson  : "com.squareup.retrofit2:converter-gson:$dependencyVersion.retrofitGson",
+                retrofitScalar: "com.squareup.retrofit2:converter-scalars:$dependencyVersion.retrofitScalar",
+        ]
+        localDbDependencies = [
+                room    : "androidx.room:room-runtime:$dependencyVersion.room",
+                roomKtx : "androidx.room:room-ktx:$dependencyVersion.room",
+                fbstetho: "com.facebook.stetho:stetho:$dependencyVersion.fbstetho"
+        ]
+        localDbKaptDependencies = [
+                room: "androidx.room:room-compiler:$dependencyVersion.room"
+        ]
+        localdbDebugDependencies = [
+                androiddebug: "com.amitshekhar.android:debug-db:$dependencyVersion.androiddebug"
+        ]
+        testImplementations = [
+                jUnit          : "junit:junit:$testVersion.jUnit",
+                mockitoCore    : "org.mockito:mockito-core:$testVersion.mockitoCore",
+                coroutineTest  : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$testVersion.coroutineTest",
+                mockitoKotlin  : "com.nhaarman.mockitokotlin2:mockito-kotlin:$testVersion.mockitoKotlin",
+                coreTesting    : "androidx.arch.core:core-testing:$testVersion.coreTesting",
+                androidJUnit   : "androidx.test.ext:junit:$testVersion.androidJUnit",
+                androidEspresso: "androidx.test.espresso:espresso-core:$testVersion.androidEspresso",
+                room           : "androidx.room:room-testing:$dependencyVersion.room"
+        ]
+    }
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.0.3"
+
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.android.tools.build:gradle:${android_plugin_version}"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+//        classpath "com.google.gms:google-services:$google_services_version"
+//        classpath "com.google.firebase:firebase-crashlytics-gradle:$crashlytics_version"
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:$sonarqube_version"
+//        classpath "com.google.firebase:perf-plugin:$performance_monitoring_version"
+        classpath "com.dynatrace.tools.android:gradle-plugin:$dynatrace_version"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
+        //classpath "com.licel:dexprotector-gradle-plugin:$dex_protector_version" // disabled for now due to license issue
+        //classpath "com.licel:dexprotector:$dex_protector_version" // disabled for now due to license issue
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
