@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/dashboardLanding"
-        android:name="com.eyedea.dashboard.sub.landing.view.ui.DashboardLanding"
+        android:name="com.eyedea.dashboard.sub.landing.view.ui.DashboardLandingPage"
         android:label="DashboardLanding" />
 
 

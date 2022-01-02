@@ -89,5 +89,6 @@ dependencies {
         }
     }
 
-    implementation project(":features:core")
+    api project(":features:core")
+    api project(":services:pokedex")
 }

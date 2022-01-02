@@ -96,8 +96,10 @@ dependencies {
         }
     }
 
-    implementation project(":features:dashboard")
-    implementation project(":features:core")
-    implementation project(":features:util")
-    implementation project(":features:info")
+    api project(":features:dashboard")
+    api project(":features:core")
+    api project(":features:util")
+    api project(":features:info")
+
+
 }

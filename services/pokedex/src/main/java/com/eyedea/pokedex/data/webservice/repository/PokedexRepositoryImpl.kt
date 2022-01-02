@@ -1,5 +1,6 @@
 package com.eyedea.pokedex.data.webservice.repository
 
+import com.eyedea.core.model.Result
 import com.eyedea.pokedex.data.webservice.mapper.PokedexResponseDtoMapper
 import com.eyedea.pokedex.data.webservice.service.PokedexAPI
 import com.eyedea.pokedex.domain.entity.PokedexListEntity
@@ -9,7 +10,7 @@ class PokedexRepositoryImpl (
     private val pokedexAPI: PokedexAPI,
     private val pokedexResponseDtoMapper: PokedexResponseDtoMapper
 ) : PokedexRepository{
-    override suspend fun getPokedexList(): PokedexListEntity {
+    override suspend fun getPokedexList(): Result<PokedexListEntity> {
         return pokedexResponseDtoMapper(
             pokedexAPI.getPokemonList()
         )

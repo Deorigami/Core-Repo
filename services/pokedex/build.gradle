@@ -85,4 +85,6 @@ dependencies {
             testImplementation value
         }
     }
+
+    api project(":features:core")
 }

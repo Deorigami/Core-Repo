@@ -1,5 +1,6 @@
 package com.eyedea.core.extension
 
+import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
@@ -19,6 +20,15 @@ class StatefulLiveData<P, R>(
     val onCanceled = MediatorLiveData<Unit>()
     val isLoading = MediatorLiveData<Boolean>()
     val isTriggered = MediatorLiveData<Boolean>()
+    val executable = MediatorLiveData<P>()
+    val statefulResultLiveData: MediatorLiveData<StatefulResult<R>> = MediatorLiveData()
+
+    fun cancel() {
+        executor.cancel()
+        onCanceled.postValue(Unit)
+        isTriggered.postValue(false)
+        isLoading.postValue(false)
+    }
 
     fun listen(
         owner : LifecycleOwner,
@@ -41,8 +51,30 @@ class StatefulLiveData<P, R>(
         })
     }
 
+    fun refresh() {
+        if (isExecuted) {
+            isTriggered.postValue(true)
+            isLoading.postValue(true)
+            executable.postValue(executable.value)
+        }
+    }
+
+    private var isExecuted = false
+
+    fun get(param: P, isSingleRequest: Boolean = false) {
+        Log.d("ANGGA", "get: $param ")
+        if (!isSingleRequest || !isExecuted) {
+            isTriggered.postValue(true)
+            isLoading.postValue(true)
+            executable.postValue(param!!)
+            isExecuted = true
+        }
+    }
+
     private val execution : LiveData<StatefulResult<R>>
         get() = executionMutable
+
+
 
     val executionMutable : MediatorLiveData<StatefulResult<R>> = MediatorLiveData()
 
@@ -50,9 +82,20 @@ class StatefulLiveData<P, R>(
     init {
         onSuccess.addSource(execution){
             if (it is StatefulResult.Success){
-                onSuccess.postValue(it.data)
-
+                onSuccess.postValue(it.data!!)
             }
+        }
+
+        onError.addSource(execution) {
+            if (it is StatefulResult.Failed) {
+                onError.postValue(it.error!!)
+                isLoading.postValue(false)
+                statefulResultLiveData.postValue(it)
+            }
+        }
+
+        executionMutable.addSource(executable) {
+            executor.execute(coroutineScope, it, executionMutable::postValue)
         }
     }
 }

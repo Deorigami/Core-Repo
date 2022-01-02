@@ -1,6 +1,7 @@
 package com.eyedea.testmultimodule.di
 
 import android.content.Context
+
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.eyedea.testmultimodule.BuildConfig
 import dagger.Module
@@ -10,6 +11,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -29,5 +31,6 @@ object NetworkModule {
         .Builder()
         .baseUrl(BuildConfig.POKEDEX_URL)
         .client(okHttpClient)
+        .addConverterFactory(GsonConverterFactory.create())
         .build()
 }

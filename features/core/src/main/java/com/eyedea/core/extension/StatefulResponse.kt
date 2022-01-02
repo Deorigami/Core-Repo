@@ -1,5 +1,7 @@
 package com.eyedea.core.extension
 
+import com.eyedea.core.model.Result
+
 sealed class StatefulResponse<out T> {
     val succeeded
         get() = this is Success && data != null
