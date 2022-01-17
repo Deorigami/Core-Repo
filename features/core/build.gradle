@@ -39,9 +39,8 @@ dependencies {
             main        : mainDependencies,
             ui          : uiDependencies,
             module      : moduleDependencies,
-            notification: notificationDependencies,
-            ciam        : ciamDependencies,
-            localDb     : localDbDependencies
+            localDb     : localDbDependencies,
+            firebase    : firebaseDependencies
     ]
 
     def dependencyKaptGroup = [
@@ -59,7 +58,10 @@ dependencies {
 
     dependencyGroup.each { key, dependencies ->
         dependencies.each { key2, dependency ->
-            implementation dependency
+            if (key == "firebase" && key2 == "bom")
+                implementation platform(dependency)
+            else
+                implementation dependency
         }
     }
     dependencyKaptGroup.each { key, dependencies ->
@@ -85,4 +87,5 @@ dependencies {
             testImplementation value
         }
     }
+
 }

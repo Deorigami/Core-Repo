@@ -5,11 +5,9 @@ import com.eyedea.core.extension.StatefulResponse
 import com.eyedea.core.extension.StatefulResult
 import com.eyedea.core.model.Error
 import com.eyedea.core.model.Result
-import com.google.firebase.crashlytics.FirebaseCrashlytics
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import org.forgerock.android.auth.exception.ApiException
 import java.io.InterruptedIOException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
@@ -57,7 +55,6 @@ abstract class BaseUseCase <P, R> {
         }
         return when (this) {
             is SocketTimeoutException, is InterruptedIOException, is UnknownHostException, is ConnectException -> Error("NO INTERNET", this.message?: this::class.java.simpleName)
-            is ApiException -> Error(this.statusCode.toString(), this.message ?: this::class.java.simpleName)
             is Exception -> Error("NO DATA", this.localizedMessage ?: this::class.java.simpleName)
             else -> Error("", this.message ?: this::class.java.simpleName)
         }
