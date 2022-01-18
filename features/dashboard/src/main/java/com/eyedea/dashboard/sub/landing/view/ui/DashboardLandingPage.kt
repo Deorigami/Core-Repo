@@ -11,16 +11,18 @@ import com.eyedea.dashboard.sub.landing.DashboardLandingContract
 import com.eyedea.dashboard.sub.landing.view.presenter.DashboardViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import javax.inject.Named
 
 @AndroidEntryPoint
 class DashboardLandingPage(
     override val layout: Int = R.layout.page_dashboard_landing
 ) : BaseViewBindingFragment<PageDashboardLandingBinding>() {
 
-    //Router
+    // Router
     // -----------------------------------------------
 
     @Inject override lateinit var router: DashboardLandingContract.Router
+
     private val viewModel : DashboardViewModel by viewModels()
 
     override fun initBinding(view: View) {
@@ -32,7 +34,7 @@ class DashboardLandingPage(
 
         binding?.apply {
             textViewDasboard.apply {
-                text = "ini dari dashboard module"
+
             }
             buttonView.setOnClickListener {
                 router.navigateToPokedexInfo()
