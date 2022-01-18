@@ -9,7 +9,7 @@ import javax.inject.Named
 @Module
 @InstallIn(SingletonComponent::class)
 object DashboardModule {
+
     @Provides
-    @Named("TestFromDashboard")
     fun providesFromDashboard() : String = "this is from module dashboard"
 }
