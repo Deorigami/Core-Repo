@@ -1,16 +1,17 @@
-plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
-}
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
-    compileSdk 32
+    compileSdk androidCompileSdkVersion
 
     defaultConfig {
-        minSdk 21
-        targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        minSdk androidMinSdkVersion
+        targetSdk androidTargetSdkVersion
+        versionCode appVersionCode
+        versionName appVersionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -33,10 +34,59 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    def dependencyGroup = [
+            core        : coreDependencies,
+            main        : mainDependencies,
+            ui          : uiDependencies,
+            module      : moduleDependencies,
+            localDb     : localDbDependencies,
+            firebase    : firebaseDependencies
+    ]
+
+    def dependencyKaptGroup = [
+            core   : coreKaptDependencies,
+            localDb: localDbKaptDependencies
+    ]
+
+    def dependencyDebugGroup = [
+            chuckerDebug: chuckerDebugDependencies
+    ]
+
+    def dependencyReleaseGroup = [
+            chuckerRelease: chuckerReleaseDependencies
+    ]
+
+    dependencyGroup.each { key, dependencies ->
+        dependencies.each { key2, dependency ->
+            if (key == "firebase" && key2 == "bom")
+                implementation platform(dependency)
+            else
+                implementation dependency
+        }
+    }
+    dependencyKaptGroup.each { key, dependencies ->
+        dependencies.each { key2, dependency ->
+            kapt dependency
+        }
+    }
+    dependencyDebugGroup.each { key, dependencies ->
+        dependencies.each { key2, dependency ->
+            debugImplementation dependency
+        }
+    }
+    dependencyReleaseGroup.each { key, dependencies ->
+        dependencies.each { key2, dependency ->
+            releaseImplementation dependency
+        }
+    }
+
+    testImplementations.each { key, value ->
+        if (key.startsWith('android')) {
+            androidTestImplementation value
+        } else {
+            testImplementation value
+        }
+    }
+
+    api project(":features:core")
 }
