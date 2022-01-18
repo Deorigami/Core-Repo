@@ -12,7 +12,7 @@ class StatusResultDtoMapper(
             StatusEntity(
                 code = it.code,
                 englishDescription =  it.desc_en,
-                bahasDescription = it.desc_id,
+                bahasaDescription = it.desc_id,
                 platform = it.platform,
                 bahasaTitle = it.title_id,
                 englishTitle = it.title_en,

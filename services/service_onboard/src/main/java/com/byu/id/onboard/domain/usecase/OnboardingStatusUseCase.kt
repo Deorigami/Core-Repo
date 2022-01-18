@@ -6,7 +6,7 @@ import com.byu.id.onboard.domain.entity.OnboardingStatusEntity
 import com.byu.id.onboard.domain.repository.OnboardServiceRepository
 
 class OnboardingStatusUseCase(
-    val repository : OnboardServiceRepository
+    private val repository : OnboardServiceRepository
 ) : BaseUseCase<Unit, OnboardingStatusEntity>() {
     override val default: OnboardingStatusEntity
         get() = OnboardingStatusEntity.DEFAULT

@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface OnboardService {
 
-    @GET("https://api.byu.id/api/init/status")
+    @GET("init/status")
     suspend fun getOnboardStatus() : ResultDto<OnboardingStatusResultDto>
 }

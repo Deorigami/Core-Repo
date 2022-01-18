@@ -27,6 +27,7 @@ object NetworkModule {
     @Provides
     fun providesRetrofit(okHttpClient: OkHttpClient) : Retrofit = Retrofit
         .Builder()
+        .baseUrl("https://api.byu.id/api/")
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()

@@ -1,17 +1,17 @@
-package com.byu.id.feature_onboarding.splash.presenter
+package com.byu.id.ui.presenter
 
 import androidx.lifecycle.viewModelScope
 import com.byu.id.core.base.BaseViewModel
 import com.byu.id.core.extension.StatefulLiveData
-import com.byu.id.feature_onboarding.splash.SplashScreenContract
 import com.byu.id.onboard.domain.usecase.OnboardingStatusUseCase
+import com.byu.id.ui.SplashScreenContract
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class OnboardingViewModel @Inject constructor(
+class SplashViewModel @Inject constructor(
     onboardingStatusUseCase: OnboardingStatusUseCase
-) : BaseViewModel(), SplashScreenContract.Presenter {
+) : BaseViewModel(), SplashScreenContract.Presenter{
     override fun getKillableStatefulLiveData(): List<StatefulLiveData<*, *>> {
         return listOf()
     }
@@ -20,5 +20,4 @@ class OnboardingViewModel @Inject constructor(
         onboardingStatusUseCase,
         viewModelScope
     )
-
 }
