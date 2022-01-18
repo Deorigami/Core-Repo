@@ -92,5 +92,4 @@ dependencies {
     }
 
     api project(":features:core")
-    api project(":services:pokedex")
 }

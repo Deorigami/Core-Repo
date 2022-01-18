@@ -9,13 +9,14 @@ dependencyResolutionManagement {
 
     }
 }
-rootProject.name = "Test Multi Module"
+rootProject.name = "Byu_dev"
 include ':app'
-include ':services:pokedex'
 include ':features:dashboard'
 include ':features:core'
 include ':features:util'
 include ':features:info'
 include ':component_album'
 include ':component'
+include ':services:onboard'
 include ':features:config'
+include ':features:onboard'

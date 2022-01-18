@@ -12,7 +12,7 @@ android {
     compileSdk androidCompileSdkVersion
 
     defaultConfig {
-        applicationId "com.eyedea.testmultimodule"
+        applicationId "com.byu.id"
         minSdk androidMinSdkVersion
         targetSdk androidTargetSdkVersion
         versionCode appVersionCode
@@ -102,6 +102,7 @@ dependencies {
     api project(":features:core")
     api project(":features:util")
     api project(":features:info")
+    api project(':features:onboard')
 
 
 }

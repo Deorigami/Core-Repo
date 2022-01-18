@@ -18,9 +18,10 @@
             <option value="$PROJECT_DIR$/features/core" />
             <option value="$PROJECT_DIR$/features/dashboard" />
             <option value="$PROJECT_DIR$/features/info" />
+            <option value="$PROJECT_DIR$/features/onboard" />
             <option value="$PROJECT_DIR$/features/util" />
             <option value="$PROJECT_DIR$/services" />
-            <option value="$PROJECT_DIR$/services/pokedex" />
+            <option value="$PROJECT_DIR$/services/onboard" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

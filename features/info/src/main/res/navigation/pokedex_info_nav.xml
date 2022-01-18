@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/pokedexInfoPage"
-        android:name="com.eyedea.info.sub.infolanding.view.PokedexInfoPage"
+        android:name="com.byu.id.info.sub.infolanding.view.PokedexInfoPage"
         android:label="PokedexInfoPage" />
 
     <action
