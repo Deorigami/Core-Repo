@@ -11,12 +11,12 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Byu_dev"
 include ':app'
-include ':features:dashboard'
+include ':features:feature_dashboard'
 include ':features:core'
-include ':features:util'
-include ':features:info'
+include ':features:feature_util'
+include ':features:feature_info'
 include ':component_album'
 include ':component'
-include ':services:onboard'
-include ':features:config'
-include ':features:onboard'
+include ':services:service_onboard'
+include ':features:feature_config'
+include ':features:feature_onboarding'

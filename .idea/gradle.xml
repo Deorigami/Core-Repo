@@ -14,14 +14,14 @@
             <option value="$PROJECT_DIR$/component" />
             <option value="$PROJECT_DIR$/component_album" />
             <option value="$PROJECT_DIR$/features" />
-            <option value="$PROJECT_DIR$/features/config" />
             <option value="$PROJECT_DIR$/features/core" />
-            <option value="$PROJECT_DIR$/features/dashboard" />
-            <option value="$PROJECT_DIR$/features/info" />
-            <option value="$PROJECT_DIR$/features/onboard" />
-            <option value="$PROJECT_DIR$/features/util" />
+            <option value="$PROJECT_DIR$/features/feature_config" />
+            <option value="$PROJECT_DIR$/features/feature_dashboard" />
+            <option value="$PROJECT_DIR$/features/feature_info" />
+            <option value="$PROJECT_DIR$/features/feature_onboarding" />
+            <option value="$PROJECT_DIR$/features/feature_util" />
             <option value="$PROJECT_DIR$/services" />
-            <option value="$PROJECT_DIR$/services/onboard" />
+            <option value="$PROJECT_DIR$/services/service_onboard" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -88,5 +88,5 @@ dependencies {
         }
     }
 
-    api project(":features:config")
+    api project(':features:feature_config')
 }

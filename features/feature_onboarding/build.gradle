@@ -1,26 +1,20 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 
-def properties = new Properties()
-properties.load(new FileInputStream(rootProject.file("local.properties")))
-
-
 android {
     compileSdk androidCompileSdkVersion
 
     defaultConfig {
-        applicationId "com.byu.id"
         minSdk androidMinSdkVersion
         targetSdk androidTargetSdkVersion
         versionCode appVersionCode
         versionName appVersionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        buildConfigField("String", 'POKEDEX_URL', properties.getProperty("POKEDEX_URL"))
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -36,7 +30,6 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
     buildFeatures {
         viewBinding true
     }
@@ -98,11 +91,6 @@ dependencies {
         }
     }
 
-    api project(':features:feature_dashboard')
     api project(":features:core")
-    api project(':features:feature_util')
-    api project(':features:feature_info')
-    api project(':features:feature_onboarding')
-
-
+    api project(":services:service_onboard")
 }
