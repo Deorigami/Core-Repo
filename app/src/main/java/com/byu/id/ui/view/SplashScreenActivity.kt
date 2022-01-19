@@ -7,56 +7,23 @@ import androidx.activity.viewModels
 import com.byu.id.R
 import com.byu.id.core.base.BaseActivity
 import com.byu.id.feature_onboarding.onboarding.view.OnboardingActivity
-import com.byu.id.ui.SplashScreenContract
 import com.byu.id.ui.presenter.SplashViewModel
-import javax.inject.Inject
 
 
 class SplashScreenActivity(
-    layout: Int = R.layout.activity_splash_screen
+    layout: Int = R.layout.activity_base_fragment
 ) : BaseActivity(layout) {
 
-    private val viewModel : SplashViewModel by viewModels()
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash_screen)
+        val fragment = SplashScreenPage()
+        fragment.arguments = intent.extras
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.mainFragment, fragment)
+            .commit()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
 
-        getData()
-        setObserver()
-    }
-
-    private fun setObserver(){
-        viewModel.run {
-            onboardingStatus.listen(
-                this@SplashScreenActivity,
-                onSuccess = { statusEntity ->
-                    Log.d("ANGGA", "setObserver: $statusEntity ")
-                    val status = statusEntity.status.find { it.platform == "android" }
-                    status?.let {
-                        if (it.code == 200) navigateToOnboard()
-                    }
-                },
-                onError = {
-                    Log.d("ANGGA", "setObserver: $it ")
-                },
-                onComplete = {
-                    Log.d("ANGGA", "complete")
-                }
-            )
-        }
-    }
-
-    private fun getData(){
-        viewModel.onboardingStatus.get(Unit)
-    }
-
-    private fun navigateToOnboard(){
-        val intent = Intent(this, OnboardingActivity::class.java)
-        startActivity(intent)
-        finish()
     }
 
 }

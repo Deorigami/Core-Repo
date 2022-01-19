@@ -6,9 +6,9 @@
     app:startDestination="@id/splashScreenPage">
     <fragment
         android:id="@+id/splashScreenPage"
-        android:name="com.byu.id.feature_onboarding.splash.view.SplashScreenPage"
+        android:name="com.byu.id.ui.view.SplashScreenPage"
         android:label="MainFragment"
-        tools:layout="@layout/fragment_main"
+        tools:layout="@layout/page_splash_screen"
         />
 
     <include app:graph="@navigation/dashboard_nav"/>

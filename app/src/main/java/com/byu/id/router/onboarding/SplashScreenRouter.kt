@@ -14,7 +14,7 @@ class SplashScreenRouter : BaseRouter(), SplashScreenContract.Router {
     }
 
     override fun navigateToMaintenancePage() {
-        TODO("Not yet implemented")
+        // TODO("Not yet implemented")
     }
 
 }
