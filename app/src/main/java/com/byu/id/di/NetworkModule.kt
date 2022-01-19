@@ -1,9 +1,7 @@
 package com.byu.id.di
 
 import android.content.Context
-
 import com.chuckerteam.chucker.api.ChuckerInterceptor
-import com.eyedea.testmultimodule.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,7 +27,7 @@ object NetworkModule {
     @Provides
     fun providesRetrofit(okHttpClient: OkHttpClient) : Retrofit = Retrofit
         .Builder()
-        .baseUrl(BuildConfig.POKEDEX_URL)
+        .baseUrl("https://api.byu.id/api/")
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()

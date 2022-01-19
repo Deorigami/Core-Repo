@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Ardinata/StudioProjects/Core-Repo/app/src/main/res/layout/activity_main.xml" value="0.1921875" />
+        <entry key="..\:/Users/Ardinata/StudioProjects/Core-Repo/app/src/main/res/layout/activity_splash_screen.xml" value="0.346875" />
+        <entry key="..\:/Users/Ardinata/StudioProjects/Core-Repo/app/src/main/res/layout/page_splash_screen.xml" value="0.346875" />
+        <entry key="..\:/Users/Ardinata/StudioProjects/Core-Repo/features/feature_onboarding/src/main/res/layout/activity_onboarding.xml" value="0.346875" />
+        <entry key="..\:/Users/Ardinata/StudioProjects/Core-Repo/features/feature_onboarding/src/main/res/layout/activity_splash_screen.xml" value="0.346875" />
+        <entry key="..\:/Users/Ardinata/StudioProjects/Core-Repo/features/feature_onboarding/src/main/res/layout/page_splash_screen.xml" value="0.346875" />
+        <entry key="..\:/Users/Ardinata/StudioProjects/Core-Repo/features/feature_util/src/main/res/layout/activity_base_fragment.xml" value="0.346875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1328125" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/page_test_view_binding.xml" value="0.1328125" />

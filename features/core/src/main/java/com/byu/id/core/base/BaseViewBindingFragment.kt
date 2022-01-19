@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.byu.id.core.contract.RouterContract
-
+import dagger.hilt.android.AndroidEntryPoint
 
 abstract class BaseViewBindingFragment<VB : ViewBinding> : Fragment(), Binding {
 
