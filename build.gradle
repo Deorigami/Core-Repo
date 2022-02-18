@@ -1,17 +1,15 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    def localProperties = new Properties()
-    localProperties.load(new FileInputStream(rootProject.file("local.properties")))
-
+    
     ext {
         version = [
-                major : localProperties.getProperty("version.major") as Integer,
-                minor : localProperties.getProperty("version.minor") as Integer,
-                patch : localProperties.getProperty("version.patch") as Integer
+                major : 0,
+                minor : 0,
+                patch : 1
         ]
 
         appVersionName = "${version.major}.${version.minor}.${version.patch}"
-        appVersionCode = localProperties.getProperty("versionCode") as Integer
+        appVersionCode = 1
 
 
         androidMinSdkVersion = 21
