@@ -4,10 +4,6 @@ apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 
-def properties = new Properties()
-properties.load(new FileInputStream(rootProject.file("local.properties")))
-
-
 android {
     compileSdk androidCompileSdkVersion
 
